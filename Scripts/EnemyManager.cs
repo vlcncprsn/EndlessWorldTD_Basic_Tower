@@ -1,3 +1,14 @@
+/***************************************************************
+*file: EnemyManager.cs
+*author: G. Valdiviez
+*class: CS 4700 – Game Development
+*assignment: Final Program
+*date last modified: 11/6/2026
+*
+*purpose: Extremely rudimentary enemy AI. Just moves the enemy in an ellipse.
+*
+****************************************************************/
+
 using System;
 using UnityEngine;
 
@@ -12,7 +23,8 @@ public class EnemyManager : MonoBehaviour
 
     private float currAngle = 0f;
 
-    // Update is called once per frame
+    // function: Update
+    // Purpose: repositions the enemy based on its current angle, where the pivot point is, and the radius of the ellipse.
     void Update()
     {
         currAngle += speed * Time.deltaTime;
