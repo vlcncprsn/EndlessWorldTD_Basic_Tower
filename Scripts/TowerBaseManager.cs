@@ -3,11 +3,11 @@
 *author: G. Valdiviez
 *class: CS 4700 – Game Development
 *assignment: Final Program
-*date last modified: 11/6/2026
+*date last modified: 11/8/2026
 *
 *purpose: Allows the Towers bases to function as intended by the development team
 *         Let's tower heads and cores be attached to the base, giving it a place to shoot from and a general type of damage.
-*         Calls BulletPhysics.cs functions to shoot at the nearest enemy.
+*         Acts as the foundation for tower code as a whole.
 *
 ****************************************************************/
 
@@ -47,7 +47,8 @@ public class TowerBaseManager : MonoBehaviour
 
     // function: Start
     // Purpose: Called on the frame when this script is enabled.
-    //          Whenever you boot up the game, it will initialize the variables in towerData.
+    //          If there are already parts on the tower, it will Initialize() them
+    //          Initializes currentHP and currentRange in line with TowerBaseData.cs
     void Start()
     {
         currentHP = baseData.health;
@@ -70,6 +71,7 @@ public class TowerBaseManager : MonoBehaviour
     // Purpose: Every tenth of a second, this function will check to see if there is an enemy to lock on to
     //          If there isn't nearest enemy is null, if there is it determines which enemy is closest.
     //          If the tower isn't complete, then Target will be set to null until the tower is complete.
+    //          If the tower already has a target, it won't switch targets until it or the tower is destroyed.
     void UpdateTarget()
     {
         if (!IsTowerComplete())
@@ -125,7 +127,9 @@ public class TowerBaseManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    // function: Update
+    // Purpose: Called every frame while the script is active.
+    //          Right Now, it has a damage key in it, since as of 11/8/2026, I haven't tested towers against enemy AI yet.
     void Update()
     {
         if (Keyboard.current.kKey.wasPressedThisFrame)
@@ -134,6 +138,9 @@ public class TowerBaseManager : MonoBehaviour
         }
     }
 
+    // function: TakeDamage
+    // Purpose: If an enemy collides with the tower, it will decrease its health by the variable damage.
+    //          If the tower's health reaches zero, all components of the tower (Base, Core, Head) are destroyed.
     public void TakeDamage(float damage)
     {
         currentHP -= damage;
@@ -158,6 +165,9 @@ public class TowerBaseManager : MonoBehaviour
 
     }
 
+
+    // function: AttachCore
+    // Purpose: Attaches a core to the base. This isn't fully implement yet.
     public void AttachCore(TowerCoreManager core)
     {
         if (core == null)
@@ -181,6 +191,8 @@ public class TowerBaseManager : MonoBehaviour
 
     }
 
+    // function: AttachHead
+    // Purpose: Attaches a head to the base. This isn't fully implement yet.
     public void AttachHead(TowerHeadManager head)
     {
         if (head == null)

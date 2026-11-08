@@ -3,11 +3,11 @@
 *author: G. Valdiviez
 *class: CS 4700 – Game Development
 *assignment: Final Program
-*date last modified: 11/6/2026
+*date last modified: 11/8/2026
 *
 *purpose: Allows the Tower Cores to function as intended by the development team
 *         Determines the physics attributes of the tower, i.e. damage, fire rate, shots per burst.
-*         Can be attached to a TowerBase
+*         A TowerCoreManager object can be attached to a TowerBase.
 *
 ****************************************************************/
 
@@ -47,12 +47,6 @@ public class TowerCoreManager : MonoBehaviour
         currDamage = coreData.damage;
         currFireInterval = coreData.fireInterval;
         currShotsPerBurst = coreData.shotsPerBurst;
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
     }
 
     // function: Update

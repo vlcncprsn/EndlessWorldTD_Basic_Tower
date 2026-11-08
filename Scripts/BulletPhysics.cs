@@ -3,7 +3,7 @@
 *author: G. Valdiviez
 *class: CS 4700 – Game Development
 *assignment: Final Program
-*date last modified: 11/6/2026
+*date last modified: 11/8/2026
 *
 *purpose: Contains the physics behind the 'Bullet' Prefab.
 *         Gets the bullet to interact with enemies if they collide.

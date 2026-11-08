@@ -3,11 +3,12 @@
 *author: G. Valdiviez
 *class: CS 4700 – Game Development
 *assignment: Final Program
-*date last modified: 11/6/2026
+*date last modified: 11/8/2026
 *
 *purpose: Allows the Tower Heads to function as intended by the development team
 *         Determines the projectile that a full tower fires, alongside special characteristics depending on the head type.
-*         Can be attached to a TowerBase.
+*         Calls BulletPhysics.cs to shoot at enemies nearby.
+*         A TowerHeadManager object can be attached to a TowerBase.
 *
 ****************************************************************/
 
@@ -34,7 +35,7 @@ public class TowerHeadManager : MonoBehaviour
     public Transform Target { get; private set; }
 
     // function: Initialize
-    // Purpose: Assigns parentBase to the towerBase base
+    // Purpose: Assigns parentBase to the towerBase base and gives the head a default orientation (where it's head will rotate when no enemies are nearby).
     public virtual void Initialize(TowerBaseManager b)
     {
         parentBase = b;
@@ -70,7 +71,7 @@ public class TowerHeadManager : MonoBehaviour
 
     // function: Shoot
     // Purpose: Conjures a projectilePrefab. Doing so will call the projectile's separate file to see how to track it.
-    // //       The projectile will take the transform parameter as the target, and deal the float parameter's worth of damage to it.
+    //          The projectile will take the transform parameter as the target, and deal the float parameter's worth of damage to it.
     public void Shoot(Transform target, float damage)
     {
         if (target == null || headData == null)
